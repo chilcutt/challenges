@@ -8,7 +8,7 @@ class Building
       @floors << Floor.new(self, f)
     end
 
-    @elevator = Elevator.new(@floors.first)
+    @elevator = Elevator.new(self, @floors.first)
   end
 
   def enter
