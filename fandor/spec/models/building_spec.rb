@@ -26,4 +26,19 @@ describe Building do
       building.enter.should == first_floor
     end
   end
+
+  describe '#call_elevator' do
+    before(:each) do
+      elevator.stub(:move)
+    end
+
+    it 'moves the elevator to the calling floor' do
+      elevator.should_receive(:move).with(other_floor)
+      building.call_elevator(other_floor)
+    end
+
+    it 'returns the elevator' do
+      building.call_elevator(other_floor).should == elevator
+    end
+  end
 end
