@@ -17,7 +17,7 @@ describe Floor do
 
   describe '#call_elevator' do
     it 'returns an elevator from the building' do
-      building.should_receive(:elevator).and_return(elevator)
+      building.should_receive(:call_elevator).and_return(elevator)
       Floor.new(building, 1).call_elevator.should == elevator
     end
   end

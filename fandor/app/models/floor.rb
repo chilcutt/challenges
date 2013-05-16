@@ -6,4 +6,8 @@ class Floor
     @building = building
     @number = floor_number
   end
+
+  def call_elevator
+    building.call_elevator
+  end
 end
