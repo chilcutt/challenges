@@ -1,7 +1,4 @@
-require 'rubygems'
-require 'bundler/setup'
-
-Bundler.require
+require_relative '../spec_helper'
 
 describe Building do
 end
