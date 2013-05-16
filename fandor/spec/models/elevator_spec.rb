@@ -11,7 +11,7 @@ describe Elevator do
     end
 
     it 'has a starting floor' do
-      elevator.floor.should == floor
+      elevator.current_floor.should == floor
     end
   end
 end
