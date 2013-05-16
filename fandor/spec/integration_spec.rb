@@ -21,4 +21,14 @@ describe 'integration tests' do
     # move us back to the first floor
     current_floor.call_elevator.move(1).number.should == 1
   end
+
+  it 'performs under stress' do
+    current_floor = building.enter
+    10000.times do
+      elevator = current_floor.call_elevator
+      target_floor = rand(5) + 1
+      current_floor = elevator.move(target_floor)
+      current_floor.number.should == target_floor
+    end
+  end
 end
