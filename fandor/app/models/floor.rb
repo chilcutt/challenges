@@ -8,6 +8,6 @@ class Floor
   end
 
   def call_elevator
-    building.call_elevator
+    building.call_elevator(self)
   end
 end
