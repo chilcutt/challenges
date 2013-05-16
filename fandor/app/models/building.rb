@@ -19,4 +19,8 @@ class Building
     elevator.move(floor)
     elevator
   end
+
+  def get_floor(floor_number)
+    @floors[floor_number - 1]
+  end
 end

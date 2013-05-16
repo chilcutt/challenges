@@ -41,4 +41,11 @@ describe Building do
       building.call_elevator(other_floor).should == elevator
     end
   end
+
+  describe '#get_floor' do
+    it 'returns the floor at the given number' do
+      building.get_floor(1).should == first_floor
+      building.get_floor(2).should == other_floor
+    end
+  end
 end
