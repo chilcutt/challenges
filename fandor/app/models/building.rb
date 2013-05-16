@@ -16,7 +16,7 @@ class Building
   end
 
   def call_elevator(floor)
-    elevator.move(floor)
+    elevator.move(floor.number)
     elevator
   end
 

@@ -7,7 +7,7 @@ class Elevator
     @current_floor = starting_floor
   end
 
-  def move(floor)
-    @current_floor = floor
+  def move(floor_number)
+    @current_floor = @building.get_floor(floor_number)
   end
 end

@@ -4,7 +4,7 @@ describe Building do
   let(:building) { Building.new(5) }
   let(:elevator) { double('elevator') }
   let(:first_floor) { double('first_floor') }
-  let(:other_floor) { double('other_floor') }
+  let(:other_floor) { double('other_floor', :number => 3) }
 
   before(:each) do
     Floor.stub(:new).and_return(first_floor, other_floor)
@@ -33,7 +33,7 @@ describe Building do
     end
 
     it 'moves the elevator to the calling floor' do
-      elevator.should_receive(:move).with(other_floor)
+      elevator.should_receive(:move).with(other_floor.number)
       building.call_elevator(other_floor)
     end
 
