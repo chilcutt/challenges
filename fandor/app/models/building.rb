@@ -14,4 +14,9 @@ class Building
   def enter
     @floors.first
   end
+
+  def call_elevator(floor)
+    elevator.move(floor)
+    elevator
+  end
 end
