@@ -22,6 +22,46 @@ describe 'integration tests' do
     current_floor.call_elevator.move(1).number.should == 1
   end
 
+  it 'handles multiple users' do
+    # user 1 enters the building and moves to the 5th floor
+    user1_floor = building.enter
+    user1_floor = user1_floor.call_elevator.move(5)
+
+    # user 1 should be on the 5th floor
+    user1_floor.should == building.get_floor(5)
+    user1_floor.number.should == 5
+
+    # elevator should be on 5th floor
+    building.elevator.current_floor.should == user1_floor
+
+    # user 2 enters the building and calls the elevator
+    user2_floor = building.enter
+    user2_floor.call_elevator
+
+    # elevator should be on the first floor now
+    building.elevator.current_floor.should == user2_floor
+    building.elevator.current_floor.should_not == user1_floor
+
+    # user 2 works on floor 2
+    user2_floor = user2_floor.call_elevator.move(2)
+    user2_floor.should == building.get_floor(2)
+    user2_floor.number.should == 2
+    building.elevator.current_floor.should == user2_floor
+    building.elevator.current_floor.should_not == user1_floor
+
+    # user 1 wants to leave now
+    user1_floor.call_elevator
+    building.elevator.current_floor.should == user1_floor
+    building.elevator.current_floor.should_not == user2_floor
+
+    # user 1 goes to the first floor
+    user1_floor = user1_floor.call_elevator.move(1)
+    user1_floor.should == building.get_floor(1)
+    user1_floor.number.should == 1
+    building.elevator.current_floor.should == user1_floor
+    building.elevator.current_floor.should_not == user2_floor
+  end
+
   it 'performs under stress' do
     current_floor = building.enter
     10000.times do
