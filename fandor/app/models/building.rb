@@ -10,4 +10,8 @@ class Building
 
     @elevator = Elevator.new(@floors.first)
   end
+
+  def enter
+    @floors.first
+  end
 end
