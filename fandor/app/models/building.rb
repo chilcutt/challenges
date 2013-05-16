@@ -5,7 +5,7 @@ class Building
   def initialize(num_floors)
     @floors = []
     (1..num_floors).each do |f|
-      @floors << Floor.new(f)
+      @floors << Floor.new(self, f)
     end
 
     @elevator = Elevator.new(@floors.first)
