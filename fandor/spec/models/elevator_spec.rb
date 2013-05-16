@@ -22,5 +22,9 @@ describe Elevator do
       elevator.move(other_floor)
       elevator.current_floor.should == other_floor
     end
+
+    it 'returns the new floor' do
+      elevator.move(other_floor).should == other_floor
+    end
   end
 end
